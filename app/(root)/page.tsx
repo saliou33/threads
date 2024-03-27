@@ -1,12 +1,12 @@
-import { fetchThreads } from "@/lib/actions/thread.actions";
+import { fetchPosts } from "@/lib/actions/thread.actions";
 import { UserButton, currentUser } from "@clerk/nextjs";
+import { jsonify } from "@/lib/utils";
 import ThreadCard from "@/components/cards/ThreadCard";
 import Image from "next/image";
-import { jsonify } from "@/lib/utils";
 
 export default async function Home() {
   const user = await currentUser();
-  const result = jsonify(await fetchThreads(1, 30));
+  const result = jsonify(await fetchPosts(1, 30));
 
   return (
     <>

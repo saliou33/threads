@@ -1,4 +1,4 @@
-import { fetchUserThreads } from "@/lib/actions/user.actions";
+import { fetchUserPosts } from "@/lib/actions/user.actions";
 import Thread from "@/lib/models/thread.model";
 import { redirect } from "next/navigation";
 import { jsonify } from "@/lib/utils";
@@ -11,7 +11,7 @@ interface Props {
 }
 
 async function ThreadsTab({ currentUserId, accountId, accountType }: Props) {
-  const result = jsonify(await fetchUserThreads(accountId));
+  const result = jsonify(await fetchUserPosts(accountId));
 
   if (!result) {
     redirect("/");
