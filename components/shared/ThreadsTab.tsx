@@ -1,5 +1,4 @@
 import { fetchUserPosts } from "@/lib/actions/user.actions";
-import Thread from "@/lib/models/thread.model";
 import { redirect } from "next/navigation";
 import { jsonify } from "@/lib/utils";
 import ThreadCard from "../cards/ThreadCard";
