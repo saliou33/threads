@@ -16,9 +16,9 @@ import * as z from "zod";
 import { Textarea } from "../ui/textarea";
 import { usePathname, useRouter } from "next/navigation";
 import { createThread } from "@/lib/actions/thread.actions";
-import { useOrganization } from "@clerk/nextjs";
+import { useOrganization, useUser } from "@clerk/nextjs";
 
-function PostThread({ userId }: { userId: string }) {
+const PostThread = ({ userId }: { userId: string }) => {
   const pathname = usePathname();
   const router = useRouter();
   const { organization } = useOrganization();
@@ -74,6 +74,6 @@ function PostThread({ userId }: { userId: string }) {
       </form>{" "}
     </Form>
   );
-}
+};
 
 export default PostThread;

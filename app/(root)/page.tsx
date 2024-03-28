@@ -1,5 +1,5 @@
 import { fetchPosts } from "@/lib/actions/thread.actions";
-import { UserButton, currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
 import { jsonify } from "@/lib/utils";
 import ThreadCard from "@/components/cards/ThreadCard";
 import Image from "next/image";
