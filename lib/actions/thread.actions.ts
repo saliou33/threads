@@ -41,26 +41,22 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
     parentId: { $in: [null, undefined] },
   }); // Get the total count of posts
 
-  const threads = await postsQuery.exec();
+  const posts = await postsQuery.exec();
 
-  const isNext = totalPostsCount > skipAmount + threads.length;
+  const isNext = totalPostsCount > skipAmount + posts.length;
 
-  return { threads, isNext };
+  return { posts, isNext };
 }
 
 interface Params {
-  text: string;
-  author: string;
-  communityId: string | null;
-  path: string;
+  text: string,
+  author: string,
+  communityId: string | null,
+  path: string,
 }
 
-export async function createThread({
-  text,
-  author,
-  communityId,
-  path,
-}: Params) {
+export async function createThread({ text, author, communityId, path }: Params
+) {
   try {
     connectToDB();
 
@@ -204,17 +200,12 @@ export async function fetchThreadById(threadId: string) {
   }
 }
 
-export async function addCommentToThread({
-  threadId,
-  commentText,
-  userId,
-  path,
-}: {
-  threadId: string;
-  commentText: string;
-  userId: string;
-  path: string;
-}) {
+export async function addCommentToThread(
+  threadId: string,
+  commentText: string,
+  userId: string,
+  path: string
+) {
   connectToDB();
 
   try {
